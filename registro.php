@@ -1,11 +1,11 @@
 <?php
 
-include 'conexion.php';
+//include 'conexion.php';
 
 $servername = "localhost";
-$database = "cargapp";
-$username = "root";
-$password = "";
+$database = "id15018040_cargapp";
+$username = "id15018040_root";
+$password = "C@rg@pp123456";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
@@ -26,27 +26,48 @@ $usuario = $_POST['usuario'];
 
 $password = $_POST['password'];
 
+$selecttpdocu = $_POST['selecttpdocu'];
+
 
 if ($_POST['selectrol'] == 1) {
 
-	$sql1 = "INSERT INTO usuario (usuario, contraseña, clienteid, conductorid) VALUES ('$usuario', '$password', 000, $cedula)";
+	$sql = "INSERT INTO conductor (cedula, nombres, apellidos, telefono, departamento, municipio, direccion, correo, tpvehiculo, licencia, soat, tecmeca, rol) VALUES ($cedula, '$name', '$apellidos', '$telefono', 0, 0, 'dcion', '$email', 'tp', 1, 1, 1, $rol)";
 
-	var_dump($sql1);
-	
-	$sql = "INSERT INTO condutor (cedula, nombres, apellidos, telefono, departamento, municipio, direccion, correo, tpvehiculo, licencia, soat, tecmeca, rol) VALUES ($cedula, '$name', '$apellidos', $telefono, 'dpto', 'mpio', 'dcion' $email', 'tp', 1, 1, 1, $rol)";
-
-		var_dump($sql); 
+		//var_dump($conn,$sql); 
 
 		if (mysqli_query($conn, $sql)) {
-			header('Location:/perfil.html');
+
+			$sql1 = "INSERT INTO usuariocond (usuario, contraseña, conductorid) VALUES ('$usuario', '$password', $cedula)";
+
+			if (mysqli_query($conn, $sql1)) {
+				header('Location:https://cargappcucuta.000webhostapp.com/perfil.html');
+			}else{
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+			}
 		}else{
-			echo "error al insertar en la BD";
-		}
+			echo "Error: " . $sql1 . "<br>" . mysqli_error($conn);		}
 
 		mysqli_close( $conn );
 
 }else{
-	echo "generador de carga".$_POST['selectrol'];
+
+	$sql = "INSERT INTO cliente (cedula, nit, razonsocial, nombres, apellidos, direccion, departamento, municipio, telefono, correo, rol) VALUES ($cedula, '00000', '0000', '$name', '$apellidos', 'dcion', 0, 0, '$telefono', '$email', $rol)";
+
+
+		if (mysqli_query($conn, $sql)) {
+
+			$sql1 = "INSERT INTO usuario (usuario, contraseña, clienteid) VALUES ('$usuario', '$password', $cedula)";
+
+			if (mysqli_query($conn, $sql1)) {
+				header('Location:https://cargappcucuta.000webhostapp.com/perfiluser.html');
+			}else{
+				echo "Error insert user: " . $sql . "<br>" . mysqli_error($conn);
+			}
+		}else{
+			echo "Error insert clien: " . $sql1 . "<br>" . mysqli_error($conn);
+		}
+
+		mysqli_close( $conn );
 }
 
 

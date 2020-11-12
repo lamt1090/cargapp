@@ -1,48 +1,53 @@
 <?php
 
-	echo "estoy aqui";
-echo "</br>";
+include 'conexion.php';
 
-/*if (isset($_POST['licencia']) && isset($_POST['soat']) && isset($_POST['tecmeca'])) {
-	$licencia = true;
-	var_dump($_POST['licencia']);
-	$soat = true;
-	var_dump($_POST['soat']);
-	$tecmeca = true;
-	var_dump($_POST['tecmeca']);
-}*/
+$servername = "localhost";
+$database = "id15018040_cargapp";
+$username = "id15018040_root";
+$password = "C@rg@pp123456";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
 
 
+$name = $_POST['name'];
+$apellidos = $_POST['apellidos'];
+$cedula = $_POST['cedula'];
+$telefono = $_POST['telefono'];
+$nit = $_POST['nit'];
+$razonsocial = $_POST['razonsocial'];
+$email = $_POST['email'];
+$selectdpto = $_POST['selectdpto'];
+$selectmpio = $_POST['selectmpio'];
+$direccion = $_POST['direccion'];
 
-	echo "estoy aqui";
-echo "</br>";
 
-echo $_POST['name'];
-echo "<br>";
+if ($conn == true) {
+	
+	$sql = "UPDATE cliente SET nit = '$nit', razonsocial = '$razonsocial', nombres = '$name', apellidos = '$apellidos', direccion = '$direccion', departamento = $selectdpto, municipio = $selectmpio, telefono = '$telefono',   correo = '$email', rol = 1 WHERE cedula = $cedula";
 
-echo $_POST['apellidos'];
-echo "<br>";
-echo $_POST['name'];
-echo "<br>";
+	//var_dump($conn, $sql);
 
-echo $_POST['cedula'];
-echo "<br>";
-echo $_POST['cedula'];
-echo "<br>";
+	if (mysqli_query($conn, $sql)) {
 
-echo $_POST['telefono'];
-echo "<br>";
-echo $_POST['nit'];
-echo "<br>";
+			echo'<script type="text/javascript">
+    				alert("Datos Guardados exitosamnete");
+    					window.location.href="perfiluser.html";
+   				</script>';
 
-echo $_POST['nameempresa'];
-echo "<br>";
-echo $_POST['selectdpto'];
-echo "<br>";
-echo $_POST['selectmpio'];
-echo "<br>";
+			
+				//header('Location:https://cargappcucuta.000webhostapp.com/perfiluser.html');
 
-echo $_POST['direccion'];
+	}else{
+
+				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+	}
+}else{
+	echo "no hay conexión";
+}
+
+
+
 
 
 
