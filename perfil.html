@@ -1,3 +1,23 @@
+<?php
+
+$servername = "localhost";
+$database = "id15018040_cargapp";
+$username = "id15018040_root";
+$password = "C@rg@pp123456";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if($conn == true){
+
+    if (mysqli_query($conn, $sql)) {
+    $sql = "SELECT * FROM departamento";
+    $result = mysqli_query($conn, $sql);
+
+}else{
+    echo "Error: " . $conn . "<br>" . mysqli_error($conn);
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,12 +169,8 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="selectdepartamento"  name="selectdpto" required data-error="Por favor seleccione un departamento">
-                                              <option selected>seleccione un Departamento</option>
-                                              <option value="1">fffff</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              <option value="5">5</option>
+                                                <option selected>seleccione un Departamento</option>
+                                                
                                             </select>
                                     </div>
                                     <div class="col-sm-6">
