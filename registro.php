@@ -40,7 +40,7 @@ if ($_POST['selectrol'] == 1) {
 			$sql1 = "INSERT INTO usuariocond (usuario, contraseña, conductorid) VALUES ('$usuario', '$password', $cedula)";
 
 			if (mysqli_query($conn, $sql1)) {
-				header('Location:https://cargappcucuta.000webhostapp.com/perfil.html');
+				header('Location:https://cargappcucuta.000webhostapp.com/perfil.php');
 			}else{
 				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			}
@@ -51,15 +51,15 @@ if ($_POST['selectrol'] == 1) {
 
 }else{
 
-	$sql = "INSERT INTO cliente (cedula, nit, razonsocial, nombres, apellidos, direccion, departamento, municipio, telefono, correo, rol) VALUES ($cedula, '00000', '0000', '$name', '$apellidos', 'dcion', 0, 0, '$telefono', '$email', $rol)";
+	$sql2 = "INSERT INTO cliente (cedula, nit, razonsocial, nombres, apellidos, direccion, departamento, municipio, telefono, correo, rol) VALUES ($cedula, '00000', '0000', '$name', '$apellidos', 'dcion', 0, 0, '$telefono', '$email', $rol)";
 
 
-		if (mysqli_query($conn, $sql)) {
+		if (mysqli_query($conn, $sql2)) {
 
-			$sql1 = "INSERT INTO usuario (usuario, contraseña, clienteid) VALUES ('$usuario', '$password', $cedula)";
+			$sql3 = "INSERT INTO usuario (usuario, contraseña, clienteid) VALUES ('$usuario', '$password', $cedula)";
 
-			if (mysqli_query($conn, $sql1)) {
-				header('Location:https://cargappcucuta.000webhostapp.com/perfiluser.html');
+			if (mysqli_query($conn, $sql3)) {
+				header('Location:https://cargappcucuta.000webhostapp.com/perfiluser.php');
 			}else{
 				echo "Error insert user: " . $sql . "<br>" . mysqli_error($conn);
 			}

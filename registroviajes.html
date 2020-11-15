@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CargApp Generador de Carga</title>
+    <title>CargApp</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="perfiluser.html" data-target="#collapseTwo"
+                <a class="nav-link" href="perfil.html" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
                     <span>Editar perfil</span>
@@ -61,19 +61,10 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
+                <a class="nav-link " href="ofertas.html"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
                     <span>Ofertas</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link " href="registroviajes.php"  data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-list"></i>
-                    <span>Ingresar Ofertas</span>
                 </a>
             </li>
 
@@ -87,7 +78,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link " href="cerrarsesion.php" 
+                <a class="nav-link " href="login.html" 
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Cerrar sesión</span>
@@ -128,47 +119,13 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Editar Perfil Generador de Carga</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Ingresar datos ofertas de viajes</h1>
                             </div>
-                            <form class="user" method="post" action="modificaruser.php">
-                                <div class="form-group row">
+                            <form class="user" method="post" action="registrarviaje.php">
+                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="Name" name="name" 
-                                            placeholder="Ingrese su nombre" required data-error="Por favor ingrese su nombre">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="LastName" name="apellidos" 
-                                            placeholder="Ingrese sus apellidos" required data-error="Por favor ingrese sus apellidos">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" id="cedula" name="cedula" size="15" 
-                                            placeholder="Número de documento de identidad" size="15" required data-error="Por favor ingrese su cedula">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-user" id="telefono" name="telefono" size="15" 
-                                            placeholder="ingrese su número celular" required data-error="Por favor ingrese su # de celular">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="nit" name="nit" size="15" 
-                                            placeholder="Ingresa el nit de la empresa" required data-error="Por favor ingrese su nit">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="nameempresa" name="nameempresa" 
-                                            placeholder="Ingrese nombre de la empresa" required data-error="Por favor ingrese el nombre de la empresa">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" 
-                                        placeholder="Ingrese el correo electrónico">
-                                </div>
-                            <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <select class="form-control" id="SelectDepartamento" name="selectdpto" required data-error="Por favor seleccione un departamento">
-                                              <option selected>Seleccione su Departamento</option>
+                                            <select class="form-control" id="selectdptorigen" name="selectdptorigen" required data-error="Por favor seleccione un departamento">
+                                              <option selected>Seleccione su Departamento origen</option>
                                               <option value="1">1</option>
                                               <option value="2">2</option>
                                               <option value="3">3</option>
@@ -177,7 +134,33 @@
                                             </select>
                                     </div>
                                     <div class="col-sm-6">
-                                            <select class="form-control" id="SelectCiudad" name="selectmpio" required data-error="Por favor seleccione un municipio">
+                                            <select class="form-control" id="selectmpiorigen" name="selectmpiorigen" required data-error="Por favor seleccione un municipio">
+                                              <option selected>Seleccione su Municipio origen</option>
+                                              <option value="1">1</option>
+                                              <option value="2">2</option>
+                                              <option value="3">3</option>
+                                              <option value="4">4</option>
+                                              <option value="5">5</option>
+                                            </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <input type="text" class="form-control form-control-user"
+                                            id="direcciondestino" placeholder="Dirección de origen" name="direccionorigen" required data-error="Por favor ingrese su dirección">
+                                </div>
+                                 <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <select class="form-control" id="selectdptodestino" name="selectdptodestino" required data-error="Por favor seleccione un departamento">
+                                              <option selected>Seleccione su Departamento detino</option>
+                                              <option value="1">1</option>
+                                              <option value="2">2</option>
+                                              <option value="3">3</option>
+                                              <option value="4">4</option>
+                                              <option value="5">5</option>
+                                            </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                            <select class="form-control" id="selectmpiodestino" name="selectmpiodestino" required data-error="Por favor seleccione un municipio">
                                               <option selected>Seleccione su Municipio</option>
                                               <option value="1">1</option>
                                               <option value="2">2</option>
@@ -186,15 +169,51 @@
                                               <option value="5">5</option>
                                             </select>
                                     </div>
-                            </div>
+                                </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
-                                            id="Password" placeholder="Dirección" name="direccion" required data-error="Por favor ingrese su dirección">
+                                            id="direcciondestino" placeholder="Dirección destino" name="direcciondestino" required data-error="Por favor ingrese su dirección">
                                 </div>
-
+                                <div class="form-group row">
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="tpcarga" name="tpcarga" 
+                                            placeholder="Por favor ingrese el tipo de carga" required data-error="Por favor ingrese el tipo de carga">
+                                    </div>
+                                    <div class="col-sm-5 mb-3 mb-sm-0">
+                                        <input type="number" class="form-control form-control-user" id="pesocarga" name="pesocarga"  
+                                            placeholder="Ingrese el peso de la carga" required data-error="Por favor ingrese el peso de la carga">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control form-control-user" id="tn" name="tn" 
+                                            placeholder="En toneladas" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="tpvehiculos" name="tpvehiculos" 
+                                        placeholder="Ingrese los tipo de vehículo de carga que solicita">
+                                    </div>
+                                    <div class="col-sm-6 ">
+                                        <input type="number" class="form-control form-control-user" id="vflete" name="vflete" 
+                                        placeholder="Ingrese el valor del viaje">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                       <label for="example-date-input" class="col-sm-6">Fecha de carga</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="date" value="2020-11-13" id="fechacarga" name="fechacarga" required data-error="Por favor elija una fecha">
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="example-date-input" class="col-sm-6">Fecha de entrega</label>
+                                  <div class="col-sm-6">
+                                    <input class="form-control" type="date" value="2020-11-19" id="fechaentrega" name="fechaentrega" required data-error="Por favor elija una fecha">
+                                  </div>
+                                </div>
+                           <hr>
                                 <div align="center">
-                                     <button type="submit" class="btn btn-lg btn-primary">ACTUALIZAR</button>
-                                    <input type="button" value="CANCELAR" class="btn btn-lg btn-danger ">
+                                     <button type="submit" class="btn btn-lg btn-primary">REGISTRAR</button>
+                                    <a href="ofertas.html"><input type="button" value="CANCELAR" class="btn btn-lg btn-danger "></a>
                                 </div>
                             </form>
                         </div>

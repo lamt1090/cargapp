@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`cliente` (
   `correo` VARCHAR(255) NULL,
   `rol` int(10) NOT NULL,
   PRIMARY KEY (`cedula`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -58,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`conductor` (
   `tecmeca` VARCHAR(255) NOT NULL,
   `rol` int(10) NOT NULL,
   PRIMARY KEY (`cedula`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -68,6 +70,7 @@ CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`departamento` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -77,7 +80,12 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`municipio` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`))
+  `dptoid` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fkdepartaento`
+    FOREIGN KEY (`dptoid`)
+    REFERENCES `id15018040_cargapp`.`departamento` (`id`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -86,12 +94,11 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`oferta` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` VARCHAR(255) NOT NULL,
   `dtosalidaid` INT(11) NOT NULL,
   `dtodestinoid` INT(11) NOT NULL,
   `mpiosalidaid` INT(11) NOT NULL,
   `mpiodestinoid` INT(11) NOT NULL,
-  `barrio` VARCHAR(255) NOT NULL,
+  `tipocarga` VARCHAR(255) NOT NULL,
   `direccionsalida` VARCHAR(255) NOT NULL,
   `direcciondestino` VARCHAR(255) NOT NULL,
   `pesocarga` VARCHAR(255) NOT NULL,
@@ -99,13 +106,18 @@ CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`oferta` (
   `valorflete` VARCHAR(255) NOT NULL,
   `fechasalida` DATE NOT NULL,
   `fechaentrega` DATE NOT NULL,
+  `clienteid` int(20) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fkmunicipio_salida`
     FOREIGN KEY (`mpiosalidaid`)
     REFERENCES `id15018040_cargapp`.`municipio` (`id`),
   CONSTRAINT `oferta_ibfk_1`
     FOREIGN KEY (`dtosalidaid`)
-    REFERENCES `id15018040_cargapp`.`departamento` (`id`))
+    REFERENCES `id15018040_cargapp`.`departamento` (`id`),
+    CONSTRAINT `oferta_ibfk_2`
+    FOREIGN KEY (`clienteid`)
+    REFERENCES `id15018040_cargapp`.`cliente` (`cedula`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -117,25 +129,15 @@ CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`usuario` (
   `usuario` VARCHAR(255) NOT NULL,
   `contraseña` VARCHAR(255) NOT NULL,
   `clienteid` INT(20) NULL,
+  `conductorid` INT(20) NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fkusuario_cliente`
     FOREIGN KEY (`clienteid`)
-    REFERENCES `id15018040_cargapp`.`cliente` (`cedula`))
-DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `id15018040_cargapp`.`usuariocond`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`usuariocond` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `usuario` VARCHAR(255) NOT NULL,
-  `contraseña` VARCHAR(255) NOT NULL,
-  `conductorid` INT(20) NULL,
-  PRIMARY KEY (`id`),
+    REFERENCES `id15018040_cargapp`.`cliente` (`cedula`),
   CONSTRAINT `fkusuario_conductor`
     FOREIGN KEY (`conductorid`)
     REFERENCES `id15018040_cargapp`.`conductor` (`cedula`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -155,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `id15018040_cargapp`.`vehiculo` (
   CONSTRAINT `fkcoductor_vehiculo`
     FOREIGN KEY (`conductorid`)
     REFERENCES `id15018040_cargapp`.`conductor` (`cedula`))
+ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 

@@ -1,12 +1,24 @@
-<?php
+<?php 
+session_name('CargApp');
+session_start();
+if($_SESSION['ID-SESSION'] == ""){
+    echo'<script type="text/javascript">
+                    alert("Debes iniciar sesion");
+                        window.location.href="login.html";
+                </script>';
+}elseif($_SESSION['rol'] == 2){
+    header('Location:/perfiluser.php');
+}
+
 
 $servername = "localhost";
 $database = "id15018040_cargapp";
 $username = "id15018040_root";
 $password = "C@rg@pp123456";
 
-  $mysqli = new mysqli('localhost', '$username', '$password', '$database');
-  if (mysqli_connect_errno()) {
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if (mysqli_connect_errno()) {
     printf("Conexión fallida: %s\n", mysqli_connect_error());
     exit();
 }
@@ -23,6 +35,14 @@ $password = "C@rg@pp123456";
     <meta name="author" content="">
 
     <title>CargApp de Transportador</title>
+
+    <!--=====================================
+      PLUGINS DE JAVASCRIPT
+      ======================================-->
+      <!-- jQuery 3 -->
+      <script src="files/bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Bootstrap 3.3.7 -->
+      <script src="files/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,7 +85,7 @@ $password = "C@rg@pp123456";
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="perfil.html" data-target="#collapseTwo"
+                <a class="nav-link" href="perfil.php" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
                     <span>Editar perfil</span>
@@ -74,7 +94,7 @@ $password = "C@rg@pp123456";
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="perfil.html" data-target="#collapseTwo"
+                <a class="nav-link" href="registrarvehiculo.php" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
                     <span>Vehículo</span>
@@ -170,25 +190,22 @@ $password = "C@rg@pp123456";
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <select class="form-control" id="selectdepartamento"  name="selectdpto" required data-error="Por favor seleccione un departamento">
-                                                <option selected>seleccione un Departamento</option>
+                                            <select class="form-control" id="selectdpto"  name="selectdpto" required data-error="Por favor seleccione un departamento" onchange="getval(this)">
+                                                <option value="0" >seleccione un Departamento</option>
                                                  <?php
-                                                  $query = $mysqli -> query ("SELECT * FROM departamento");
-                                                  while ($valores = mysqli_fetch_array($query)) {
-                                                    echo '<option value="'.$valores[id].'">'.$valores[nombre].'</option>';
+                                                 $consulta = "SELECT * FROM departamento";
+                                                 $resultado = mysqli_query($conn, $consulta);
+                                                  while ($valores = $resultado->fetch_assoc()) {
+                                                    echo '<option value="'.$valores['id'].'">'.$valores['nombre'].'</option>';
                                                   }
                                                 ?>
                                                 
                                             </select>
                                     </div>
                                     <div class="col-sm-6">
-                                            <select class="form-control" id="selectmunicipio" name="selectmpio" required data-error="Por favor seleccione un municipio">
-                                              <option selected>seleccione su municipio</option>
-                                              <option value="1">kkkkk</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              <option value="5">5</option>
+                                            <select class="form-control" id="selectmpio" name="selectmpio" required data-error="Por favor seleccione un municipio">
+                                              <option value="0">seleccione su municipio</option>
+                                              
                                             </select>
                                     </div>
                                 </div>
@@ -257,6 +274,33 @@ $password = "C@rg@pp123456";
 
     </div>
     <!-- End of Page Wrapper -->
+
+    <?php
+        echo'<script>
+                function getval(sel)
+                {
+                    $dd= sel.value;
+                    console.log($dd);
+                    var x = sel.value;
+                    console.log(x);
+
+                    var id_dpto = $dd;
+                    console.log(id_dpto);
+
+                            $.ajax({
+                                url: "select_ajax.php",
+                                method: "POST",
+                                data: {
+                                    "id":id_dpto
+                                },
+                                success: function(respuesta){
+                                    $("#selectmpio").attr("disabled", false);
+                                    $("#selectmpio").html(respuesta);
+                                }
+                            })                                  
+                }
+        </script>';
+    ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

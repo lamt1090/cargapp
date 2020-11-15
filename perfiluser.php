@@ -1,3 +1,28 @@
+<?php 
+session_name('CargApp');
+session_start();
+if($_SESSION['ID-SESSION'] == ""){
+    echo'<script type="text/javascript">
+                    alert("Debes iniciar sesion");
+                        window.location.href="login.html";
+                </script>';
+}elseif($_SESSION['rol'] == 1){
+    header('Location:/perfil.php');
+}
+
+
+$servername = "localhost";
+$database = "id15018040_cargapp";
+$username = "id15018040_root";
+$password = "C@rg@pp123456";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+if (mysqli_connect_errno()) {
+    printf("Conexión fallida: %s\n", mysqli_connect_error());
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +77,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="perfiluser.html" data-target="#collapseTwo"
+                <a class="nav-link" href="perfiluser.php" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
                     <span>Editar perfil</span>
@@ -168,12 +193,14 @@
                             <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="SelectDepartamento" name="selectdpto" required data-error="Por favor seleccione un departamento">
-                                              <option selected>Seleccione su Departamento</option>
-                                              <option value="1">1</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              <option value="5">5</option>
+                                              <option value="0" >seleccione un Departamento</option>
+                                                 <?php
+                                                 $consulta = "SELECT * FROM departamento";
+                                                 $resultado = mysqli_query($conn, $consulta);
+                                                  while ($valores = $resultado->fetch_assoc()) {
+                                                    echo '<option value="'.$valores['id'].'">'.$valores['nombre'].'</option>';
+                                                  }
+                                                ?>
                                             </select>
                                     </div>
                                     <div class="col-sm-6">

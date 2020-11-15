@@ -7,13 +7,7 @@ $password = "C@rg@pp123456";
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 if($conn == true){
-	$consultaClientes = $conn->prepare("SELECT * FROM adoptantes_tempranos");
-	$consultaClientes->execute();
-	$clientes = $consultaClientes->get_result();
-	//$clientes = $resultSet->fetch_All();
-
-	if($clientes && $clientes->num_rows>0){
-    $clientes->fetch_all(MYSQLI_ASSOC);
+	
 }
 }else{
 	echo "todo salio mal";

@@ -1,3 +1,17 @@
+<?php
+
+session_name('CargApp');
+session_start();
+if($_SESSION['ID-SESSION'] == ""){
+    echo'<script type="text/javascript">
+                    alert("Debes iniciar sesion");
+                        window.location.href="login.html";
+                </script>';
+}elseif($_SESSION['rol'] == 2){
+    header('Location:/perfiluser.php');
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +23,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CargApp Generador de Carga</title>
+    <title>CargApp</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,10 +66,19 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="perfiluser.html" data-target="#collapseTwo"
+                <a class="nav-link" href="perfil.php" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
                     <span>Editar perfil</span>
+                </a>
+            </li>
+
+             <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="registrarvehiculo.php" data-target="#collapseTwo"
+                    aria-expanded="true" >
+                    <i class="fas fa-user fa-cog"></i>
+                    <span>Vehículo</span>
                 </a>
             </li>
 
@@ -66,16 +89,7 @@
                     <i class="fas fa-list"></i>
                     <span>Ofertas</span>
                 </a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link " href="registroviajes.php"  data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-list"></i>
-                    <span>Ingresar Ofertas</span>
-                </a>
-            </li>
+            </li>          
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -128,72 +142,70 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Editar Perfil Generador de Carga</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Registro del vehículo de carga</h1>
                             </div>
-                            <form class="user" method="post" action="modificaruser.php">
+                            <form class="user" method="post" action="registrarvh.php">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="Name" name="name" 
-                                            placeholder="Ingrese su nombre" required data-error="Por favor ingrese su nombre">
+                                        <input type="text" class="form-control form-control-user" id="placa" name="placa" 
+                                            placeholder="Ingrese la placa del vehículo" required data-error="Por favor ingrese la placa">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="LastName" name="apellidos" 
-                                            placeholder="Ingrese sus apellidos" required data-error="Por favor ingrese sus apellidos">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" id="cedula" name="cedula" size="15" 
-                                            placeholder="Número de documento de identidad" size="15" required data-error="Por favor ingrese su cedula">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-user" id="telefono" name="telefono" size="15" 
-                                            placeholder="ingrese su número celular" required data-error="Por favor ingrese su # de celular">
+                                        <input type="text" class="form-control form-control-user" id="marca" name="marca" 
+                                            placeholder="Ingrese la marca del vehículo" required data-error="Por favor ingrese la marca del vehículo">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="nit" name="nit" size="15" 
-                                            placeholder="Ingresa el nit de la empresa" required data-error="Por favor ingrese su nit">
+                                        <input type="text" class="form-control form-control-user" id="modelo" name="modelo" size="15" 
+                                            placeholder="Ingrese el modelo del vehículo" required data-error="Por favor ingrese el modelo">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="nameempresa" name="nameempresa" 
-                                            placeholder="Ingrese nombre de la empresa" required data-error="Por favor ingrese el nombre de la empresa">
+                                        <input type="text" class="form-control form-control-user" id="color" name="color"
+                                            placeholder="ingrese el color del vehículo" required data-error="Por favor ingrese el color">
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" 
-                                        placeholder="Ingrese el correo electrónico">
-                                </div>
-                            <div class="form-group row">
+                                <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <select class="form-control" id="SelectDepartamento" name="selectdpto" required data-error="Por favor seleccione un departamento">
-                                              <option selected>Seleccione su Departamento</option>
-                                              <option value="1">1</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              <option value="5">5</option>
-                                            </select>
+                                        <input type="number" class="form-control form-control-user" id="cpdadmax" name="cpdadmax"
+                                            placeholder="Ingrese la capacidad máxima del vehículo" required data-error="Por favor ingrese la capacidad del vehículo">
                                     </div>
                                     <div class="col-sm-6">
-                                            <select class="form-control" id="SelectCiudad" name="selectmpio" required data-error="Por favor seleccione un municipio">
-                                              <option selected>Seleccione su Municipio</option>
-                                              <option value="1">1</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="4">4</option>
-                                              <option value="5">5</option>
-                                            </select>
+                                        <input type="text" class="form-control form-control-user" id="tpvehiculo" name="tpvehiculo" 
+                                            placeholder="Ingrese tipo de vehículo" required data-error="Por favor ingrese el tipo de vehículo">
                                     </div>
-                            </div>
-                                <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="Password" placeholder="Dirección" name="direccion" required data-error="Por favor ingrese su dirección">
                                 </div>
-
+                                
                                 <div align="center">
-                                     <button type="submit" class="btn btn-lg btn-primary">ACTUALIZAR</button>
+                                     <!--<button type="submit" class="btn btn-lg btn-primary">REGISTAR</button>
+                                     <!-- Button to Open the Modal -->
+                                      <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">
+                                        REGISTRAR
+                                      </button>
+
+                                      <!-- The Modal -->
+                                      <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                          
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            
+                                            <!-- Modal body -->
+                                            <div class="modal-body">
+                                              <h3>Desea registrar este vehículo</h3>
+                                            </div>
+                                            
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                              <button type="submit" class="btn btn-lg btn-primary">ACEPTAR</button>
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
                                     <input type="button" value="CANCELAR" class="btn btn-lg btn-danger ">
                                 </div>
                             </form>
