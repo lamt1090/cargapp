@@ -25,9 +25,9 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if($conn == true){
 
     $sql = "UPDATE oferta SET apartado = 'si' WHERE id = $id";
-    $sql = "INSERT INTO viajesapartados (id_oferta, conductorid) VALUES ($id, $n)";
+    $sql1 = "INSERT INTO viajesapartados (id_oferta, conductorid) VALUES ($id, $n)";
 
-    
+
 
 	if (mysqli_query($conn, $sql)) {
 
