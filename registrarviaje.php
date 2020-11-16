@@ -29,6 +29,14 @@ $selectdptodestino = $_POST['selectdptodestino'];
 
 $selectmpiodestino = $_POST['selectmpiodestino'];
 
+$ndptosl = $_POST['ndptosl'];
+
+$nmpiosl = $_POST['nmpiosl'];
+
+$ndptoet = $_POST['ndptoet'];
+
+$nmpioet = $_POST['nmpioet'];
+
 $tpcarga = $_POST['tpcarga'];
 
 $pesocarga = $_POST['pesocarga'];
@@ -47,7 +55,7 @@ $direcciondestino = $_POST['direcciondestino'];
 
 
 
-	$sql = "INSERT INTO oferta (dtosalidaid, dtodestinoid, mpiosalidaid, mpiodestinoid, tipocarga, direccionsalida, direcciondestino, pesocarga, tipovehiculo, valorflete, fechasalida, fechaentrega, clienteid) VALUES ($selectdptorigen, '$selectdptodestino', '$selectmpiorigen', '$selectmpiodestino', '$tpcarga', '$direccionorigen', '$direcciondestino', '$pesocarga', '$tpvehiculos', '$vflete', '$fechacarga', '$fechaentrega', $n)";
+	$sql = "INSERT INTO oferta (dtosalidaid, dtodestinoid, mpiosalidaid, mpiodestinoid, ndptosl, nmpiosl, ndptoet, nmpioet, tipocarga, direccionsalida, direcciondestino, pesocarga, tipovehiculo, valorflete, fechasalida, fechaentrega, clienteid) VALUES (1, 1, 1, 1, '$ndptosl', '$ndptoet', '$nmpiosl', '$nmpioet', '$tpcarga', '$direccionorigen', '$direcciondestino', '$pesocarga', '$tpvehiculos', '$vflete', '$fechacarga', '$fechaentrega', $n)";
 
 		//var_dump($conn,$sql); 
 

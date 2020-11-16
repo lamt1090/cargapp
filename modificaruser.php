@@ -1,4 +1,8 @@
 <?php
+session_name('CargApp');
+session_start();
+
+$n = $_SESSION['ID-SESSION'];
 
 include 'conexion.php';
 
@@ -19,12 +23,14 @@ $razonsocial = $_POST['razonsocial'];
 $email = $_POST['email'];
 $selectdpto = $_POST['selectdpto'];
 $selectmpio = $_POST['selectmpio'];
+$ndpto = $_POST['ndpto'];
+$nmpio = $_POST['nmpio'];
 $direccion = $_POST['direccion'];
 
 
 if ($conn == true) {
 	
-	$sql = "UPDATE cliente SET nit = '$nit', razonsocial = '$razonsocial', nombres = '$name', apellidos = '$apellidos', direccion = '$direccion', departamento = $selectdpto, municipio = $selectmpio, telefono = '$telefono',   correo = '$email', rol = 1 WHERE cedula = $cedula";
+	$sql = "UPDATE cliente SET nit = '$nit', razonsocial = '$razonsocial', nombres = '$name', apellidos = '$apellidos', direccion = '$direccion', departamento = 1, ndpto = '$ndpto', municipio = 1, nmpio = '$nmpio', telefono = '$telefono',   correo = '$email', rol = 1 WHERE cedula = $n";
 
 	//var_dump($conn, $sql);
 
@@ -32,7 +38,7 @@ if ($conn == true) {
 
 			echo'<script type="text/javascript">
     				alert("Datos Guardados exitosamnete");
-    					window.location.href="perfiluser.html";
+    					window.location.href="perfiluser.php";
    				</script>';
 
 			

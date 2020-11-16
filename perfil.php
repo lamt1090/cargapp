@@ -64,7 +64,7 @@ if (mysqli_connect_errno()) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertas.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertasrecientes.php">
                 <div class="sidebar-brand-text mx-3">
                     <img src="img/logo.png">
                 </div>
@@ -97,7 +97,16 @@ if (mysqli_connect_errno()) {
                 <a class="nav-link" href="registrarvehiculo.php" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
-                    <span>Vehículo</span>
+                    <span>Registrar Vehículos</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="vervehiculos.php" data-target="#collapseTwo"
+                    aria-expanded="true" >
+                    <i class="fas fa-user fa-cog"></i>
+                    <span>Ver Vehículos</span>
                 </a>
             </li>
 
@@ -106,9 +115,10 @@ if (mysqli_connect_errno()) {
                 <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
-                    <span>Ofertas</span>
+                    <span>Ver Ofertas</span>
                 </a>
             </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -175,10 +185,10 @@ if (mysqli_connect_errno()) {
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <!--<div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="number" class="form-control form-control-user" id="cedula" name="cedula" size="15" 
                                             placeholder="Número de documento de identidad" size="15" required data-error="Por favor ingresa cedula de ciudadania">
-                                    </div>
+                                    </div>-->
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-user" id="telefono" name="telefono" size="15" 
                                             placeholder="ingrese su número celular" size="15" required data-error="Por favor ingresa tu # celular">
@@ -188,7 +198,7 @@ if (mysqli_connect_errno()) {
                                     <input type="email" class="form-control form-control-user" id="email" name="email" 
                                         placeholder="Ingrese su correo electrónico" data-error="Por favor ingresa tu correo electrónico">
                                 </div>
-                                <div class="form-group row">
+                                <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="selectdpto"  name="selectdpto" required data-error="Por favor seleccione un departamento" onchange="getval(this)">
                                                 <option value="0" >seleccione un Departamento</option>
@@ -207,6 +217,16 @@ if (mysqli_connect_errno()) {
                                               <option value="0">seleccione su municipio</option>
                                               
                                             </select>
+                                    </div>
+                                </div>-->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto"  
+                                            placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" 
+                                            placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -56,7 +56,7 @@ if (mysqli_connect_errno()) {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertas.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertas.php">
                 <div class="sidebar-brand-text mx-3">
                     <img src="img/logo.png">
                 </div>
@@ -167,10 +167,10 @@ if (mysqli_connect_errno()) {
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <!--<div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="number" class="form-control form-control-user" id="cedula" name="cedula" size="15" 
                                             placeholder="Número de documento de identidad" size="15" required data-error="Por favor ingrese su cedula">
-                                    </div>
+                                    </div>-->
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-user" id="telefono" name="telefono" size="15" 
                                             placeholder="ingrese su número celular" required data-error="Por favor ingrese su # de celular">
@@ -190,7 +190,7 @@ if (mysqli_connect_errno()) {
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" 
                                         placeholder="Ingrese el correo electrónico">
                                 </div>
-                            <div class="form-group row">
+                            <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="SelectDepartamento" name="selectdpto" required data-error="Por favor seleccione un departamento">
                                               <option value="0" >seleccione un Departamento</option>
@@ -213,7 +213,17 @@ if (mysqli_connect_errno()) {
                                               <option value="5">5</option>
                                             </select>
                                     </div>
-                            </div>
+                            </div>-->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto"  
+                                            placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" 
+                                            placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
                                             id="Password" placeholder="Dirección" name="direccion" required data-error="Por favor ingrese su dirección">

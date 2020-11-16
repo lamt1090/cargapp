@@ -73,12 +73,21 @@ if($_SESSION['ID-SESSION'] == ""){
                 </a>
             </li>
 
-             <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" href="registrarvehiculo.php" data-target="#collapseTwo"
                     aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
-                    <span>Vehículo</span>
+                    <span>Registrar Vehículos</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="vervehiculos.php" data-target="#collapseTwo"
+                    aria-expanded="true" >
+                    <i class="fas fa-user fa-cog"></i>
+                    <span>Ver Vehículos</span>
                 </a>
             </li>
 
@@ -87,9 +96,9 @@ if($_SESSION['ID-SESSION'] == ""){
                 <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
-                    <span>Ofertas</span>
+                    <span>Ver Ofertas</span>
                 </a>
-            </li>          
+            </li>       
 
             <!-- Divider -->
             <hr class="sidebar-divider">

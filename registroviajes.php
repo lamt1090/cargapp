@@ -92,7 +92,7 @@ if (mysqli_connect_errno()) {
                 <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
-                    <span>Ofertas</span>
+                    <span>Ver Ofertas</span>
                 </a>
             </li>
 
@@ -159,7 +159,7 @@ if (mysqli_connect_errno()) {
                                 <h1 class="h4 text-gray-900 mb-4">Ingresar datos ofertas de viajes</h1>
                             </div>
                             <form class="user" method="post" action="registrarviaje.php">
-                                 <div class="form-group row">
+                                 <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="selectdptorigen" name="selectdptorigen" required data-error="Por favor seleccione un departamento">
                                               <option value="0">Seleccione su Departamento origen</option>
@@ -182,12 +182,22 @@ if (mysqli_connect_errno()) {
                                               <option value="5">5</option>
                                             </select>
                                     </div>
+                                </div>-->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="ndptosl" name="ndptosl"  
+                                            placeholder="Ingrese el nombre del departamento origen"  required data-error="Por favor ingresa el nombre del departamento origen">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="nmpiosl" name="nmpiosl" 
+                                            placeholder="ingrese el nombre del municipio origen" required data-error="Por favor ingresa el nombre del municipio origen">
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
                                             id="direcciondestino" placeholder="Dirección de origen" name="direccionorigen" required data-error="Por favor ingrese su dirección">
                                 </div>
-                                 <div class="form-group row">
+                                 <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="selectdptodestino" name="selectdptodestino" required data-error="Por favor seleccione un departamento">
                                               <option value="0">Seleccione su Departamento detino</option>
@@ -209,6 +219,16 @@ if (mysqli_connect_errno()) {
                                               <option value="4">4</option>
                                               <option value="5">5</option>
                                             </select>
+                                    </div>
+                                </div>-->
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text" class="form-control form-control-user" id="ndptoet" name="ndptoet"  
+                                            placeholder="Ingrese el nombre del departamento destino"  required data-error="Por favor ingresa el nombre del departamento destino">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control form-control-user" id="nmpioet" name="nmpioet" 
+                                            placeholder="ingrese el nombre del municipio destino" required data-error="Por favor ingresa el nombre del municipio destino">
                                     </div>
                                 </div>
                                 <div class="form-group">

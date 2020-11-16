@@ -7,8 +7,8 @@ if($_SESSION['ID-SESSION'] == ""){
                     alert("Debes iniciar sesion");
                         window.location.href="login.html";
                 </script>';
-}elseif($_SESSION['rol'] == 1){
-    header('Location:/ofertasrecientes.php');
+}elseif($_SESSION['rol'] == 2){
+    header('Location:/ofertas.php');
 }
 
 $n = $_SESSION['ID-SESSION'];
@@ -21,7 +21,7 @@ $password = "C@rg@pp123456";
 $conn = mysqli_connect($servername, $username, $password, $database);
 
 if($conn == true){
-    $consultaClientes = $conn->prepare("SELECT * FROM oferta WHERE clienteid = $n");
+    $consultaClientes = $conn->prepare("SELECT * FROM vehiculo WHERE conductorid = $n");
     $consultaClientes->execute();
     $clientes = $consultaClientes->get_result();
     //$clientes = $resultSet->fetch_All();
@@ -91,32 +91,42 @@ if($conn == true){
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link"  href="perfil.html"  data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="perfil.php" data-target="#collapseTwo"
+                    aria-expanded="true" >
                     <i class="fas fa-user fa-cog"></i>
                     <span>Editar perfil</span>
                 </a>
             </li>
 
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="registrarvehiculo.php" data-target="#collapseTwo"
+                    aria-expanded="true" >
+                    <i class="fas fa-user fa-cog"></i>
+                    <span>Registrar Vehículos</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="vervehiculos.php" data-target="#collapseTwo"
+                    aria-expanded="true" >
+                    <i class="fas fa-user fa-cog"></i>
+                    <span>Ver Vehículos</span>
+                </a>
+            </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="ofertas.html" " data-target="#collapseUtilities"
+                <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
                     <span>Ver Ofertas</span>
                 </a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link " href="registroviajes.php"  data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-list"></i>
-                    <span>Ingresar Ofertas</span>
-                </a>
-            </li>
-            
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -214,26 +224,19 @@ if($conn == true){
                     <div class="card shadow mb-4">
                         <?php if(!empty($clientes)): ?>
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Lista de ofertas</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Vehículos Registrados</h6>
                             </div>
                             <div class="card-body">
-                                <div class="col-12 mb-2" style="text-align: right;" >
-                                    <a class="btn btn-primary right" href="registroviajes.php" >Crear nueva oferta</a>    
-                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Descripción</th>
-                                                <th>Datos de salida</th>
-                                                <th>Dirección salida</th>
-                                                <th>Datos de destino</th>
-                                                <th>Dirección destino</th>
-                                                <th>Fecha de salida</th>
-                                                <th>Fecha de entrega</th>
-                                                <th>Peso de la carga</th>
-                                                <th>Tipo de vehículos</th>
-                                                <th>Valor del flete</th>
+                                                <th>nroplaca</th>
+                                                <th>marca</th>
+                                                <th>modelo</th>
+                                                <th>color</th>
+                                                <th>capacidad</th>
+                                                <th>tipo de vehículo</th>
                                                 <!--<th>Opciones</th>-->
                                             </tr>
                                         </thead>
@@ -243,16 +246,12 @@ if($conn == true){
                                                 //echo var_dump($clientes);
                                             ?>
                                             <tr>
-                                                <td><?php echo $cliente['tipocarga']; ?></td>
-                                                <td><?php echo $cliente['ndptosl'], " ", $cliente['nmpiosl'] ; ?></td>
-                                                <td><?php echo $cliente['direccionsalida']; ?></td>
-                                                <td><?php echo $cliente['ndptoet'], " ", $cliente['nmpioet'] ; ?></td>
-                                                <td><?php echo $cliente['direcciondestino']; ?></td>
-                                                <td><?php echo $cliente['fechasalida']; ?></td>
-                                                <td><?php echo $cliente['fechaentrega']; ?></td>
-                                                <td><?php echo $cliente['pesocarga']; ?></td>
+                                                <td><?php echo $cliente['nroplaca']; ?></td>
+                                                <td><?php echo $cliente['marca']; ?></td>
+                                                <td><?php echo $cliente['modelo']; ?></td>
+                                                <td><?php echo $cliente['color']; ?></td>
+                                                <td><?php echo $cliente['capacidadmax']; ?></td>
                                                 <td><?php echo $cliente['tipovehiculo']; ?></td>
-                                                <td><?php echo $cliente['valorflete']; ?></td>
                                             </tr>
                                            <?php endforeach; ?>
                                         </tbody>

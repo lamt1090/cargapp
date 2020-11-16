@@ -28,10 +28,12 @@ $password = $_POST['password'];
 
 $selecttpdocu = $_POST['selecttpdocu'];
 
+$politicadatos = $_POST['politicadatos'];
+
 
 if ($_POST['selectrol'] == 1) {
 
-	$sql = "INSERT INTO conductor (cedula, nombres, apellidos, telefono, departamento, municipio, direccion, correo, tpvehiculo, licencia, soat, tecmeca, rol) VALUES ($cedula, '$name', '$apellidos', '$telefono', 0, 0, 'dcion', '$email', 'tp', 1, 1, 1, $rol)";
+	$sql = "INSERT INTO conductor (cedula, nombres, apellidos, telefono, departamento, ndpto, municipio, nmpio, direccion, correo, tpvehiculo, licencia, soat, tecmeca, rol, politicadatos) VALUES ($cedula, '$name', '$apellidos', '$telefono', 0, '0', 0, '0', 'dcion', '$email', 'tp', 1, 1, 1, $rol, 'si')";
 
 		//var_dump($conn,$sql); 
 
@@ -51,7 +53,7 @@ if ($_POST['selectrol'] == 1) {
 
 }else{
 
-	$sql2 = "INSERT INTO cliente (cedula, nit, razonsocial, nombres, apellidos, direccion, departamento, municipio, telefono, correo, rol) VALUES ($cedula, '00000', '0000', '$name', '$apellidos', 'dcion', 0, 0, '$telefono', '$email', $rol)";
+	$sql2 = "INSERT INTO cliente (cedula, nit, razonsocial, nombres, apellidos, direccion, departamento, ndpto, municipio, nmpio, telefono, correo, rol, politicadatos) VALUES ($cedula, '00000', '0000', '$name', '$apellidos', 'dcion', 0, '0', 0, '0', '$telefono', '$email', $rol, 'si')";
 
 
 		if (mysqli_query($conn, $sql2)) {
