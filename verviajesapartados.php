@@ -21,7 +21,7 @@ $password = "C@rg@pp123456";
 $conn = mysqli_connect($servername, $username, $password, $database);
 
 if($conn == true){
-    $consultaClientes = $conn->prepare("SELECT * FROM oferta INNER JOIN viajesapartados ON (oferta.id = viajesapartados.id_oferta) where oferta.clienteid = $n");
+    $consultaClientes = $conn->prepare("SELECT OF.* FROM oferta OF INNER JOIN viajesapartados VJ ON (OF.id = VJ.id_oferta) WHERE VJ.conductorid = $n");
     $consultaClientes->execute();
     $clientes = $consultaClientes->get_result();
     //$clientes = $resultSet->fetch_All();
@@ -118,12 +118,21 @@ if($conn == true){
                 </a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
+                <a class="nav-link " href="ofertasrecientes.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
-                    <span>Ver Ofertas</span>
+                    <span>Ver Ofertas Disponibles</span>
+                </a>
+            </li>
+
+             <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link " href="verviajesapartados.php"  data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-list"></i>
+                    <span>Ver Ofertas Aceptadas</span>
                 </a>
             </li>
 
@@ -231,13 +240,19 @@ if($conn == true){
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
-                                                <th>marca</th>
-                                                <th>modelo</th>
-                                                <th>color</th>
-                                                <th>capacidad</th>
-                                                <th>tipo de vehículo</th>
-                                                <!--<th>Opciones</th>-->
+                                                <th>Descripción</th>
+                                                <th>Departamento de salida</th>
+                                                <th>Municipio de salida</th>
+                                                <th>Dirección salida</th>
+                                                <th>Departamento de destino</th>
+                                                <th>Municipio de destino</th>
+                                                <th>Dirección destino</th>
+                                                <th>Fecha de salida</th>
+                                                <th>Fecha de entrega</th>
+                                                <th>Peso de la carga</th>
+                                                <th>Tipo de vehículos</th>
+                                                <th>Valor del flete</th>
+                                                <th>Opciones</th>
                                             </tr>
                                         </thead>
                                         
@@ -246,9 +261,19 @@ if($conn == true){
                                                 //echo var_dump($clientes);
                                             ?>
                                             <tr>
-                                                <td><?php echo $cliente['id_viaje']; ?></td>
-                                                <td><?php echo $cliente['id_oferta']; ?></td>
-                                                <td><?php echo $cliente['conductorid']; ?></td>
+                                                <td><?php echo $cliente['tipocarga']; ?></td>
+                                                <td><?php echo $cliente['ndptosl']; ?></td>
+                                                <td><?php echo $cliente['nmpiosl']; ?></td>
+                                                <td><?php echo $cliente['direccionsalida']; ?></td>
+                                                <td><?php echo $cliente['ndptoet']; ?></td>
+                                                <td><?php echo $cliente['nmpioet']; ?></td>
+                                                <td><?php echo $cliente['direcciondestino']; ?></td>
+                                                <td><?php echo $cliente['fechasalida']; ?></td>
+                                                <td><?php echo $cliente['fechaentrega']; ?></td>
+                                                <td><?php echo $cliente['pesocarga']; ?></td>
+                                                <td><?php echo $cliente['tipovehiculo']; ?></td>
+                                                <td><?php echo $cliente['valorflete']; ?></td>
+                                                <td><a class="btn btn-primary" href="">CANCELAR</a></td>
                                             </tr>
                                            <?php endforeach; ?>
                                         </tbody>

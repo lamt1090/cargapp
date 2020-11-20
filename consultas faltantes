@@ -1,0 +1,1 @@
+SELECT of.* FROM `oferta` of INNER JOIN viajesapartados vj ON (of.id = vj.id_oferta) WHERE of.clienteid = 60308092

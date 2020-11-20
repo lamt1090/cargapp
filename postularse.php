@@ -41,7 +41,7 @@ if($conn == true){
                             echo'<script type="text/javascript">
                                 alert("Lo siento este viaje ya esta apartado");
                                 window.location.href="ofertasrecientes.php";
-                        </script>';.
+                        </script>';
 
             }else{
 
@@ -55,6 +55,7 @@ if($conn == true){
 
                         echo'<script type="text/javascript">
                                 alert("Por ser de los primeros transportadores en utilizar nuestra aplicación podrás postularse a los viajes sin ningún costo durante 1 mes. Cuando pase el mes al postularse debes cancelar un costo de $50.000 pesos por viaje.");
+                                window.location.href="ofertasrecientes.php";
                         </script>';
 
                         //header('Location:https://cargappcucuta.000webhostapp.com/perfil.html');

@@ -70,7 +70,7 @@ if($conn == true){
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertas.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertasrecientes.php">
                 <div class="sidebar-brand-text mx-3">
                     <img src="img/logo.png">
                 </div>
@@ -119,10 +119,19 @@ if($conn == true){
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
+                <a class="nav-link " href="ofertasrecientes.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
-                    <span>Ver Ofertas</span>
+                    <span>Ver Ofertas Disponibles</span>
+                </a>
+            </li>
+
+             <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link " href="verviajesapartados.php"  data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-list"></i>
+                    <span>Ver Ofertas Aceptadas</span>
                 </a>
             </li>
 

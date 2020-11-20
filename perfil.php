@@ -115,12 +115,21 @@ if (mysqli_connect_errno()) {
                 </a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link " href="ofertas.php"  data-target="#collapseUtilities"
+                <a class="nav-link " href="ofertasrecientes.php"  data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-list"></i>
-                    <span>Ver Ofertas</span>
+                    <span>Ver Ofertas Disponibles</span>
+                </a>
+            </li>
+
+             <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link " href="verviajesapartados.php"  data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-list"></i>
+                    <span>Ver Ofertas Aceptadas</span>
                 </a>
             </li>
 
