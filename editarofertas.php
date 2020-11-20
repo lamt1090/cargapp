@@ -1,6 +1,5 @@
 <?php
 
-
 session_name('CargApp');
 session_start();
 if($_SESSION['ID-SESSION'] == ""){
@@ -12,6 +11,10 @@ if($_SESSION['ID-SESSION'] == ""){
     header('Location:/perfil.php');
 }
 
+$n = $_SESSION['ID-SESSION'];
+$id = $_GET['id'];
+$_SESSION['idoferta']= $id;
+
 $servername = "localhost";
 $database = "id15018040_cargapp";
 $username = "id15018040_root";
@@ -19,6 +22,9 @@ $password = "C@rg@pp123456";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
+$consulta = "SELECT * FROM oferta WHERE id = $id";
+$resultado = mysqli_query($conn, $consulta);
+$cond = $resultado->fetch_assoc();
 
 if (mysqli_connect_errno()) {
     printf("Conexión fallida: %s\n", mysqli_connect_error());
@@ -158,7 +164,7 @@ if (mysqli_connect_errno()) {
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Ingresar datos ofertas de viajes</h1>
                             </div>
-                            <form class="user" method="post" action="registrarviaje.php">
+                            <form class="user" method="post" action="editarviaje.php">
                                  <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                             <select class="form-control" id="selectdptorigen" name="selectdptorigen" required data-error="Por favor seleccione un departamento">
@@ -185,17 +191,16 @@ if (mysqli_connect_errno()) {
                                 </div>-->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="ndptosl" name="ndptosl"  
-                                            placeholder="Ingrese el nombre del departamento origen"  required data-error="Por favor ingresa el nombre del departamento origen">
+                                        <input type="text" class="form-control form-control-user" id="ndptosl" name="ndptosl"   required data-error="Por favor ingresa el nombre del departamento origen" value="   <?php echo $cond['ndptosl']; ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="nmpiosl" name="nmpiosl" 
-                                            placeholder="ingrese el nombre del municipio origen" required data-error="Por favor ingresa el nombre del municipio origen">
+                                           required data-error="Por favor ingresa el nombre del municipio origen" value="<?php echo $cond['nmpiosl']; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
-                                            id="direcciondestino" placeholder="Dirección de origen" name="direccionorigen" required data-error="Por favor ingrese su dirección">
+                                            id="direcciondestino" name="direccionorigen" required data-error="Por favor ingrese su dirección" value="<?php echo $cond['direccionsalida']; ?>">
                                 </div>
                                  <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -224,25 +229,24 @@ if (mysqli_connect_errno()) {
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="ndptoet" name="ndptoet"  
-                                            placeholder="Ingrese el nombre del departamento destino"  required data-error="Por favor ingresa el nombre del departamento destino">
+                                            required data-error="Por favor ingresa el nombre del departamento destino" value="<?php echo $cond['ndptoet']; ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="nmpioet" name="nmpioet" 
-                                            placeholder="ingrese el nombre del municipio destino" required data-error="Por favor ingresa el nombre del municipio destino">
+                                            required data-error="Por favor ingresa el nombre del municipio destino" value="<?php echo $cond['nmpioet']; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                         <input type="text" class="form-control form-control-user"
-                                            id="direcciondestino" placeholder="Dirección destino" name="direcciondestino" required data-error="Por favor ingrese su dirección">
+                                            id="direcciondestino" name="direcciondestino" required data-error="Por favor ingrese su dirección" value="<?php echo $cond['direcciondestino']; ?>">
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-5 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="tpcarga" name="tpcarga" 
-                                            placeholder="Por favor ingrese el tipo de carga" required data-error="Por favor ingrese el tipo de carga">
+                                            required data-error="Por favor ingrese el tipo de carga" value="<?php echo $cond['tipocarga']; ?>">
                                     </div>
                                     <div class="col-sm-5 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" id="pesocarga" name="pesocarga"  
-                                            placeholder="Ingrese el peso de la carga" required data-error="Por favor ingrese el peso de la carga">
+                                        <input type="number" class="form-control form-control-user" id="pesocarga" name="pesocarga"    required data-error="Por favor ingrese el peso de la carga" value="<?php echo $cond['pesocarga']; ?>">
                                     </div>
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control form-control-user" id="tn" name="tn" 
@@ -251,29 +255,28 @@ if (mysqli_connect_errno()) {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="tpvehiculos" name="tpvehiculos" 
-                                        placeholder="Ingrese los tipo de vehículo de carga que solicita">
+                                        <input type="text" class="form-control form-control-user" id="tpvehiculos" name="tpvehiculos" value="<?php echo $cond['tipovehiculo']; ?>">
                                     </div>
                                     <div class="col-sm-6 ">
                                         <input type="number" class="form-control form-control-user" id="vflete" name="vflete" 
-                                        placeholder="Ingrese el valor del viaje">
+                                        value="<?php echo $cond['valorflete']; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                        <label for="example-date-input" class="col-sm-6">Fecha de carga</label>
                                   <div class="col-sm-6">
-                                    <input class="form-control" type="date" value="2020-11-13" id="fechacarga" name="fechacarga" required data-error="Por favor elija una fecha">
+                                    <input class="form-control" type="date" id="fechacarga" name="fechacarga" required data-error="Por favor elija una fecha" value="<?php echo $cond['fechasalida']; ?>">
                                   </div>
                                 </div>
                                 <div class="form-group row">
                                   <label for="example-date-input" class="col-sm-6">Fecha de entrega</label>
                                   <div class="col-sm-6">
-                                    <input class="form-control" type="date" value="2020-11-19" id="fechaentrega" name="fechaentrega" required data-error="Por favor elija una fecha">
+                                    <input class="form-control" type="date" id="fechaentrega" name="fechaentrega" required data-error="Por favor elija una fecha" value="<?php echo $cond['fechaentrega']; ?>">
                                   </div>
                                 </div>
                            <hr>
                                 <div align="center">
-                                     <button type="submit" class="btn btn-lg btn-primary">REGISTRAR</button>
+                                     <button type="submit" class="btn btn-lg btn-primary">ACTUALIZAR</button>
                                     <a href="ofertas.php"><input type="button" value="CANCELAR" class="btn btn-lg btn-danger "></a>
                                 </div>
                             </form>

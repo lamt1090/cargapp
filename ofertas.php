@@ -225,16 +225,18 @@ if($conn == true){
                                         <thead>
                                             <tr>
                                                 <th>Descripción</th>
-                                                <th>Datos de salida</th>
+                                                <th>Departamento de salida</th>
+                                                <th>Municipio de salida</th>
                                                 <th>Dirección salida</th>
-                                                <th>Datos de destino</th>
+                                                <th>Departamento de destino</th>
+                                                <th>Municipio de destino</th>
                                                 <th>Dirección destino</th>
                                                 <th>Fecha de salida</th>
                                                 <th>Fecha de entrega</th>
                                                 <th>Peso de la carga</th>
                                                 <th>Tipo de vehículos</th>
                                                 <th>Valor del flete</th>
-                                                <!--<th>Opciones</th>-->
+                                                <th>Opciones</th>
                                             </tr>
                                         </thead>
                                         
@@ -244,15 +246,18 @@ if($conn == true){
                                             ?>
                                             <tr>
                                                 <td><?php echo $cliente['tipocarga']; ?></td>
-                                                <td><?php echo $cliente['ndptosl'], " ", $cliente['nmpiosl'] ; ?></td>
+                                                <td><?php echo $cliente['ndptosl']; ?></td>
+                                                <td><?php echo $cliente['nmpiosl']; ?></td>
                                                 <td><?php echo $cliente['direccionsalida']; ?></td>
-                                                <td><?php echo $cliente['ndptoet'], " ", $cliente['nmpioet'] ; ?></td>
+                                                <td><?php echo $cliente['ndptoet']; ?></td>
+                                                <td><?php echo $cliente['nmpioet'] ; ?></td>
                                                 <td><?php echo $cliente['direcciondestino']; ?></td>
                                                 <td><?php echo $cliente['fechasalida']; ?></td>
                                                 <td><?php echo $cliente['fechaentrega']; ?></td>
                                                 <td><?php echo $cliente['pesocarga']; ?></td>
                                                 <td><?php echo $cliente['tipovehiculo']; ?></td>
                                                 <td><?php echo $cliente['valorflete']; ?></td>
+                                                <td><a class="btn btn-primary" href="editarofertas.php?id=<?php echo $cliente['id']; ?>">EDITAR</a></td>
                                             </tr>
                                            <?php endforeach; ?>
                                         </tbody>

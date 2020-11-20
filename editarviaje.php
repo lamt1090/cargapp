@@ -12,6 +12,7 @@ if($_SESSION['ID-SESSION'] == ""){
 }
 
 $n = $_SESSION['ID-SESSION'];
+$id = $_SESSION['idoferta'];
 
 $servername = "localhost";
 $database = "id15018040_cargapp";
@@ -55,14 +56,14 @@ $direcciondestino = $_POST['direcciondestino'];
 
 
 
-	$sql = "INSERT INTO oferta (dtosalidaid, dtodestinoid, mpiosalidaid, mpiodestinoid, ndptosl, nmpiosl, ndptoet, nmpioet, tipocarga, direccionsalida, direcciondestino, pesocarga, tipovehiculo, valorflete, fechasalida, fechaentrega, clienteid, apartado) VALUES (1, 1, 1, 1, '$ndptosl', '$nmpiosl', '$ndptoet', '$nmpioet', '$tpcarga', '$direccionorigen', '$direcciondestino', '$pesocarga', '$tpvehiculos', '$vflete', '$fechacarga', '$fechaentrega', $n, 'null')";
+	$sql = "UPDATE oferta SET ndptosl = '$ndptosl', nmpiosl = '$nmpiosl', ndptoet = '$ndptoet', nmpioet = '$nmpioet', tipocarga = '$tpcarga', direccionsalida = '$direccionorigen', direcciondestino = '$direcciondestino', pesocarga = '$pesocarga', tipovehiculo = '$tpvehiculos', valorflete = '$vflete', fechasalida = '$fechacarga', fechaentrega = '$fechaentrega' WHERE id = $id";
 
 		//var_dump($conn,$sql); 
 
 		if (mysqli_query($conn, $sql)) {
 
 				echo'<script type="text/javascript">
-    				alert("Datos Guardados exitosamnete");
+    				alert("Datos Actualizados exitosamnete");
     					window.location.href="ofertas.php";
    				</script>';
 

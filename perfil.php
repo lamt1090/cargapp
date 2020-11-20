@@ -226,44 +226,81 @@ if (mysqli_connect_errno()) {
                                 </div>-->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto"  
-                                            placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento"  value="<?php echo $cond['ndpto']; ?>">
+                                        <?php if($cond['ndpto'] == "0"){?>
+
+                                            <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto" placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento">  
+                                        <?php }else { ?> 
+
+                                            <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto" required data-error="Por favor ingresa el nombre del departamento" value="<?php echo $cond['ndpto']; ?>">
+
+                                        <?php } ?>                
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" 
-                                             value="<?php echo $cond['nmpio']; ?>" placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">
+                                        <?php if($cond['nmpio'] == "0"){?>
+                                            <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">  
+                                        <?php }else { ?> 
+
+                                            <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" value="<?php echo $cond['nmpio']; ?>" required data-error="Por favor ingresa el nombre del municipio">
+
+                                        <?php } ?>  
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user"
-                                            id="direccion" name="direccion" placeholder="Dirección" required data-error="Por favor ingresa tu dirección"  value="<?php echo $cond['direccion']; ?>">
+                                    <?php if($cond['direccion'] == "dcion"){?>
+                                            <input type="text" class="form-control form-control-user"
+                                            id="direccion" name="direccion" placeholder="Ingrese la Dirección" required data-error="Por favor ingresa tu dirección" >
+                                    <?php }else { ?> 
+                                            <input type="text" class="form-control form-control-user"
+                                            id="direccion" name="direccion" required data-error="Por favor ingresa tu dirección"  value="<?php echo $cond['direccion']; ?>">
+                                    <?php } ?>       
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" id="tpvehiculo" name="tpvehiculo" 
-                                        placeholder="Tipo de vehículo que conduces" required data-error="Por favor ingresa tipo de vehículo que conduces"  value="<?php echo $cond['tpvehiculo']; ?>">
+                                    <?php if($cond['tpvehiculo'] == "tp"){?>
+                                        <input type="text" class="form-control form-control-user" id="tpvehiculo" name="tpvehiculo" placeholder="Tipos de vehículos que conduces" required data-error="Por favor ingresa tipo de vehículo que conduces">
+                                    <?php }else { ?> 
+                                        <input type="text" class="form-control form-control-user" id="tpvehiculo" name="tpvehiculo" required data-error="Por favor ingresa tipo de vehículo que conduces"  value="<?php echo $cond['tpvehiculo']; ?>">
+                                    <?php } ?>
                                 </div> 
 
 
                                 <div class="form-group">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="custom-control custom-checkbox">
-                                              <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" id="licencia" name="licencia" value="" required data-error="seleccione el campo">Licencia Conducir
-                                              </label>
+                                            <?php if($cond['licencia'] == 1){?>
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" id="licencia" name="licencia" value="" required data-error="seleccione el campo" checked disabled>Licencia Conducir
+                                                </label>
+                                            <?php }else { ?>
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" id="licencia" name="licencia" value="" required data-error="seleccione el campo">Licencia Conducir
+                                                </label>
+                                            <?php } ?>
                                         </div>
                                     </div> 
                                     <div class="col-sm-6 mb-3 mb-sm-0">  
                                         <div class="custom-control custom-checkbox">
-                                              <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input" id="soat" name="soat" value="" required data-error="seleccione el campo">Seguro del Vehículo
-                                              </label>
+                                            <?php if($cond['soat'] == 1){?>
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" id="soat" name="soat" value="" required data-error="seleccione el campo" checked disabled>Seguro del Vehículo
+                                                </label>
+                                            <?php }else { ?>
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" id="soat" name="soat" value="" required data-error="seleccione el campo">Seguro del Vehículo
+                                                </label>
+                                            <?php } ?>
                                         </div>
                                     </div> 
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <div class="custom-control custom-checkbox">
-                                              <label class="form-check-label" required>
-                                                <input type="checkbox" class="form-check-input" id="tecmeca" name="tecmeca" value="" >Técnico Mecánico
-                                              </label>
+                                            <?php if($cond['tecmeca'] == 1){?>
+                                                <label class="form-check-label" required>
+                                                   <input type="checkbox" class="form-check-input" id="tecmeca" name="tecmeca" value="" checked disabled>Técnico Mecánico
+                                                </label>
+                                            <?php }else { ?>
+                                                <label class="form-check-label" required>
+                                                   <input type="checkbox" class="form-check-input" id="tecmeca" name="tecmeca" value="" >Técnico Mecánico
+                                                </label>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <!--<div class="col-sm-6">

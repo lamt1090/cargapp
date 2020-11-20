@@ -45,7 +45,7 @@ if($_SESSION['ID-SESSION'] == ""){
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertas.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="ofertasrecientes.php">
                 <div class="sidebar-brand-text mx-3">
                     <img src="img/logo.png">
                 </div>

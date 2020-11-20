@@ -184,17 +184,26 @@ if (mysqli_connect_errno()) {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="nit" name="nit" size="15" 
-                                             value="<?php echo $cond['cedula']; ?>" required data-error="Por favor ingrese su nit">
+                                        <?php if($cond['nit'] == "nit"){?>
+                                            <input type="text" class="form-control form-control-user" id="nit" name="nit" size="15" placeholder="Ingrese el nit" required data-error="Por favor ingrese su nit">
+                                        <?php }else { ?> 
+                                            <input type="text" class="form-control form-control-user" id="nit" name="nit" value="<?php echo $cond['nit']; ?>" required data-error="Por favor ingrese su nit">
+                                        <?php } ?>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="nameempresa" name="nameempresa" 
-                                            placeholder="Ingrese nombre de la empresa" required data-error="Por favor ingrese el nombre de la empresa">
+                                        <?php if($cond['razonsocial'] == "0000"){?>
+                                            <input type="text" class="form-control form-control-user" id="razonsocial" name="razonsocial" placeholder="Ingrese nombre de la empresa" required data-error="Por favor ingrese el nombre de la empresa">
+                                        <?php }else { ?> 
+                                            <input type="text" class="form-control form-control-user" id="razonsocial" name="razonsocial" value="<?php echo $cond['razonsocial']; ?>" required data-error="Por favor ingrese su nit">
+                                        <?php } ?> 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" 
-                                         value="<?php echo $cond['correo']; ?>">
+                                    <?php if($cond['correo'] == ""){?>
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" placeholder="Ingrese su correo electrónico">
+                                        <?php }else { ?> 
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" value="<?php echo $cond['correo']; ?>">
+                                        <?php } ?>
                                 </div>
                             <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -222,17 +231,28 @@ if (mysqli_connect_errno()) {
                             </div>-->
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto"  
-                                            placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento">
+                                         <?php if($cond['ndpto'] == "0"){?>
+                                            <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto" placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento">  
+                                        <?php }else { ?> 
+                                            <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto" required data-error="Por favor ingresa el nombre del departamento" value="<?php echo $cond['ndpto']; ?>">
+                                        <?php } ?>  
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" 
-                                            placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">
+                                        <?php if($cond['nmpio'] == "0"){?>
+                                            <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">  
+                                        <?php }else { ?> 
+                                            <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" value="<?php echo $cond['nmpio']; ?>" required data-error="Por favor ingresa el nombre del municipio">
+                                        <?php } ?> 
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                            id="Password" placeholder="Dirección" name="direccion" required data-error="Por favor ingrese su dirección">
+                                    <?php if($cond['direccion'] == "dcion"){?>
+                                            <input type="text" class="form-control form-control-user"
+                                            id="direccion" name="direccion" placeholder="Ingrese la Dirección" required data-error="Por favor ingresa tu dirección" >
+                                    <?php }else { ?> 
+                                            <input type="text" class="form-control form-control-user"
+                                            id="direccion" name="direccion" required data-error="Por favor ingresa tu dirección"  value="<?php echo $cond['direccion']; ?>">
+                                    <?php } ?> 
                                 </div>
 
                                 <div align="center">
