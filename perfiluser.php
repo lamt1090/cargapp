@@ -10,6 +10,7 @@ if($_SESSION['ID-SESSION'] == ""){
     header('Location:/perfil.php');
 }
 
+$n = $_SESSION['ID-SESSION'];
 
 $servername = "localhost";
 $database = "id15018040_cargapp";
@@ -17,6 +18,11 @@ $username = "id15018040_root";
 $password = "C@rg@pp123456";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
+
+$consulta = "SELECT * FROM cliente WHERE cedula = $n";
+$resultado = mysqli_query($conn, $consulta);
+$cond = $resultado->fetch_assoc();
+
 
 if (mysqli_connect_errno()) {
     printf("Conexión fallida: %s\n", mysqli_connect_error());
@@ -159,11 +165,11 @@ if (mysqli_connect_errno()) {
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="Name" name="name" 
-                                            placeholder="Ingrese su nombre" required data-error="Por favor ingrese su nombre">
+                                            value="<?php echo $cond['nombres']; ?>" required data-error="Por favor ingrese su nombre">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="LastName" name="apellidos" 
-                                            placeholder="Ingrese sus apellidos" required data-error="Por favor ingrese sus apellidos">
+                                            value="<?php echo $cond['apellidos']; ?>" required data-error="Por favor ingrese sus apellidos">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -173,13 +179,13 @@ if (mysqli_connect_errno()) {
                                     </div>-->
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-user" id="telefono" name="telefono" size="15" 
-                                            placeholder="ingrese su número celular" required data-error="Por favor ingrese su # de celular">
+                                             value="<?php echo $cond['telefono']; ?>" required data-error="Por favor ingrese su # de celular">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="nit" name="nit" size="15" 
-                                            placeholder="Ingresa el nit de la empresa" required data-error="Por favor ingrese su nit">
+                                             value="<?php echo $cond['cedula']; ?>" required data-error="Por favor ingrese su nit">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="nameempresa" name="nameempresa" 
@@ -188,7 +194,7 @@ if (mysqli_connect_errno()) {
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail" name="email" 
-                                        placeholder="Ingrese el correo electrónico">
+                                         value="<?php echo $cond['correo']; ?>">
                                 </div>
                             <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">

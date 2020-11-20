@@ -10,6 +10,7 @@ if($_SESSION['ID-SESSION'] == ""){
     header('Location:/perfiluser.php');
 }
 
+$n = $_SESSION['ID-SESSION'];
 
 $servername = "localhost";
 $database = "id15018040_cargapp";
@@ -17,6 +18,10 @@ $username = "id15018040_root";
 $password = "C@rg@pp123456";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
+
+$consulta = "SELECT * FROM conductor WHERE cedula = $n";
+$resultado = mysqli_query($conn, $consulta);
+$cond = $resultado->fetch_assoc();
 
 if (mysqli_connect_errno()) {
     printf("Conexión fallida: %s\n", mysqli_connect_error());
@@ -177,11 +182,11 @@ if (mysqli_connect_errno()) {
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="name" name="name" 
-                                            placeholder="Ingrese su nombre" required data-error="Por favor ingresa tu nombre">
+                                            required data-error="Por favor ingresa tu nombre" value="<?php echo $cond['nombres']; ?>">   
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="lastname" name="apellidos" 
-                                            placeholder="Ingrese sus apellidos" required data-error="Por favor ingresa tu apellidos">
+                                            required data-error="Por favor ingresa tu apellidos" value="<?php echo $cond['apellidos']; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -191,12 +196,12 @@ if (mysqli_connect_errno()) {
                                     </div>-->
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-user" id="telefono" name="telefono" size="15" 
-                                            placeholder="ingrese su número celular" size="15" required data-error="Por favor ingresa tu # celular">
+                                            required data-error="Por favor ingresa tu # celular" value="<?php echo $cond['telefono']; ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email" name="email" 
-                                        placeholder="Ingrese su correo electrónico" data-error="Por favor ingresa tu correo electrónico">
+                                        placeholder="Ingrese su correo electrónico" data-error="Por favor ingresa tu correo electrónico" value="<?php echo $cond['correo']; ?>">
                                 </div>
                                 <!--<div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -222,20 +227,20 @@ if (mysqli_connect_errno()) {
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" class="form-control form-control-user" id="ndpto" name="ndpto"  
-                                            placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento">
+                                            placeholder="Ingrese el nombre del departamento"  required data-error="Por favor ingresa el nombre del departamento"  value="<?php echo $cond['ndpto']; ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="text" class="form-control form-control-user" id="nmpio" name="nmpio" 
-                                            placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">
+                                             value="<?php echo $cond['nmpio']; ?>" placeholder="ingrese el nombre del municipio" required data-error="Por favor ingresa el nombre del municipio">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user"
-                                            id="direccion" name="direccion" placeholder="Dirección" required data-error="Por favor ingresa tu dirección">
+                                            id="direccion" name="direccion" placeholder="Dirección" required data-error="Por favor ingresa tu dirección"  value="<?php echo $cond['direccion']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="tpvehiculo" name="tpvehiculo" 
-                                        placeholder="Tipo de vehículo que conduces" required data-error="Por favor ingresa tipo de vehículo que conduces">
+                                        placeholder="Tipo de vehículo que conduces" required data-error="Por favor ingresa tipo de vehículo que conduces"  value="<?php echo $cond['tpvehiculo']; ?>">
                                 </div> 
 
 

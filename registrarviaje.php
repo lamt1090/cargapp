@@ -55,7 +55,7 @@ $direcciondestino = $_POST['direcciondestino'];
 
 
 
-	$sql = "INSERT INTO oferta (dtosalidaid, dtodestinoid, mpiosalidaid, mpiodestinoid, ndptosl, nmpiosl, ndptoet, nmpioet, tipocarga, direccionsalida, direcciondestino, pesocarga, tipovehiculo, valorflete, fechasalida, fechaentrega, clienteid) VALUES (1, 1, 1, 1, '$ndptosl', '$ndptoet', '$nmpiosl', '$nmpioet', '$tpcarga', '$direccionorigen', '$direcciondestino', '$pesocarga', '$tpvehiculos', '$vflete', '$fechacarga', '$fechaentrega', $n)";
+	$sql = "INSERT INTO oferta (dtosalidaid, dtodestinoid, mpiosalidaid, mpiodestinoid, ndptosl, nmpiosl, ndptoet, nmpioet, tipocarga, direccionsalida, direcciondestino, pesocarga, tipovehiculo, valorflete, fechasalida, fechaentrega, clienteid, apartado) VALUES (1, 1, 1, 1, '$ndptosl', '$nmpiosl', '$ndptoet', '$nmpioet', '$tpcarga', '$direccionorigen', '$direcciondestino', '$pesocarga', '$tpvehiculos', '$vflete', '$fechacarga', '$fechaentrega', $n, 'null')";
 
 		//var_dump($conn,$sql); 
 

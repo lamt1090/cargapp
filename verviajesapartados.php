@@ -21,7 +21,7 @@ $password = "C@rg@pp123456";
 $conn = mysqli_connect($servername, $username, $password, $database);
 
 if($conn == true){
-    $consultaClientes = $conn->prepare("SELECT * FROM oferta WHERE apartado <> 'si'  ");
+    $consultaClientes = $conn->prepare("SELECT * FROM oferta INNER JOIN viajesapartados ON (oferta.id = viajesapartados.id_oferta) where oferta.clienteid = $n");
     $consultaClientes->execute();
     $clientes = $consultaClientes->get_result();
     //$clientes = $resultSet->fetch_All();
@@ -34,8 +34,9 @@ if($conn == true){
 }
 //mysqli_close( $conn );
 
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,7 +127,6 @@ if($conn == true){
                 </a>
             </li>
 
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -165,7 +165,6 @@ if($conn == true){
 
         </ul>
         <!-- End of Sidebar -->
-
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -225,26 +224,20 @@ if($conn == true){
                     <div class="card shadow mb-4">
                         <?php if(!empty($clientes)): ?>
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Lista de ofertas</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Viajes Apartados</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Descripción</th>
-                                                <th>Departamento de salida</th>
-                                                <th>Municipio de salida</th>
-                                                <th>Dirección salida</th>
-                                                <th>Departamento de destino</th>
-                                                <th>Municipio de destino</th>
-                                                <th>Dirección destino</th>
-                                                <th>Fecha de salida</th>
-                                                <th>Fecha de entrega</th>
-                                                <th>Peso de la carga</th>
-                                                <th>Tipo de vehículos</th>
-                                                <th>Valor del flete</th>
-                                                <th>Opciones</th>
+                                                <th>id</th>
+                                                <th>marca</th>
+                                                <th>modelo</th>
+                                                <th>color</th>
+                                                <th>capacidad</th>
+                                                <th>tipo de vehículo</th>
+                                                <!--<th>Opciones</th>-->
                                             </tr>
                                         </thead>
                                         
@@ -253,19 +246,9 @@ if($conn == true){
                                                 //echo var_dump($clientes);
                                             ?>
                                             <tr>
-                                                <td><?php echo $cliente['tipocarga']; ?></td>
-                                                <td><?php echo $cliente['ndptosl']; ?></td>
-                                                <td><?php echo $cliente['nmpiosl']; ?></td>
-                                                <td><?php echo $cliente['direccionsalida']; ?></td>
-                                                <td><?php echo $cliente['ndptoet']; ?></td>
-                                                <td><?php echo $cliente['nmpioet']; ?></td>
-                                                <td><?php echo $cliente['direcciondestino']; ?></td>
-                                                <td><?php echo $cliente['fechasalida']; ?></td>
-                                                <td><?php echo $cliente['fechaentrega']; ?></td>
-                                                <td><?php echo $cliente['pesocarga']; ?></td>
-                                                <td><?php echo $cliente['tipovehiculo']; ?></td>
-                                                <td><?php echo $cliente['valorflete']; ?></td>
-                                                <td><a class="btn btn-primary" href="postularse.php?id=<?php echo $cliente['id']; ?>">POSTULARSE</a></td>
+                                                <td><?php echo $cliente['id_viaje']; ?></td>
+                                                <td><?php echo $cliente['id_oferta']; ?></td>
+                                                <td><?php echo $cliente['conductorid']; ?></td>
                                             </tr>
                                            <?php endforeach; ?>
                                         </tbody>
@@ -301,27 +284,6 @@ if($conn == true){
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <div class="modal" tabindex="-1" id="postular">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">TEAM CARGAPP</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Por ser de los primeros transportadores en utilizar nuestra aplicación podrás postularse a los viajes sin ningún costo durante 1 mes. </p>
-                            <p>Cuando pase el mes al postularse debes cancelar un costo de $50.000 pesos por viaje.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
-                            <button type="button" class="btn btn-primary">ACEPTAR</button>
-                        </div>
-                </div>
-            </div>
-    </div>
 
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
